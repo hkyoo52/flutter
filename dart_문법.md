@@ -63,7 +63,35 @@ void main(){
 * 최적화에 좋음
 
 
+## 클래스
+* 객체 : 만들어야 할 대상
+* class : 객체를 만들 틀
+* 인스턴스 : 클래스를 통해 만들어진 대상
+```python
+class AutoMobile{
+  String carMaker = 'Ford';
+  int price = 3000;
+  String color = 'red';
+  int wheelNumber = 4;
+}
 
+class NewCar{
+  String carMaker2 = 'Ford';
+  int price2 = 3000;
+  int wheelNumber2 = 4;
+  
+  void autoPark(){
+    print('자동 주차 가능합니다.');
+  }
+}
+void main(){
+  AutoMobile a1 =AutoMobile();
+  print(a1.carMaker);
+  
+  NewCar n1 = NewCar();
+  n1.autoPark();
+}
+```
 
 
 
