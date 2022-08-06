@@ -93,6 +93,25 @@ void main(){
 }
 ```
 
+## 생성자
+```python
+class Person{
+  String name;
+  
+  Person({String name}){   # 생성자, {} 안에 넣으면 써도 되고 안써도 된다는 의미
+    this.name = name
+  }
+}
+
+void main(){
+  Person p1 = new Person()  # Class 인스턴스 이름 = new 생성자
+  Person p2 = new Person(age=50)
+  print(p1.age)     # 결과 : null
+  print(p2.age)     # 결과 : 50
+
+}
+
+```
 
 
 
