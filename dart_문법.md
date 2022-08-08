@@ -114,7 +114,28 @@ void main(){
 ```
 
 
+## Collection Generic
+* Collection : 데이터들을 모아서 가지고 있는 자료구조
+    * fixed-length list : 리스트 크기 고정
+    * growable list : 리스트 크기 변경 가능
+* Generic : Collection이 가지고 있는 데이터들의 데이터 타입 지정
+ 
+```python
 
+
+void main(){
+  //var number = new List(5); // fixed list
+  // List<Stirng> number = new List();  // 리스트 타입 고정 -> 제네릭 기법
+  List<int> number = List(); // growable list
+  
+  // list는 add함수로 데이터 추가
+  number.add(2);
+  number.add(3);
+  number.add(7);
+  number.addAll([2,5,6]);
+  print(number);
+}
+```
 
 
 
