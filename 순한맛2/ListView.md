@@ -1,0 +1,208 @@
+#### 카드 위젯
+![image](https://user-images.githubusercontent.com/63588046/183557320-3d6244c6-f5f9-444b-b32e-0f769a80d676.png)
+
+
+![image](https://user-images.githubusercontent.com/63588046/183565152-fecbe090-6488-4b11-8a4e-41f6c4508e36.png)
+
+```python
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: ListViewPage(),
+    );
+  }
+}
+
+class ListViewPage extends StatefulWidget {
+  const ListViewPage({Key? key}) : super(key: key);
+
+  @override
+  State<ListViewPage> createState() => _ListViewPageState();
+}
+
+class _ListViewPageState extends State<ListViewPage> {
+  //데이터는 여기에 넣음
+  var titleList = [
+    'Dentist',
+    'Pharmacist',
+    'School teacher',
+    'IT manager',
+    'Account',
+    'Lawyer',
+    'Hairdresser',
+    'Physician',
+    'Web developer',
+    'Medical Secretary'
+  ];
+
+  var imageList = [
+    'image/img1.jpg',
+    'image/img2.jpg',
+    'image/img3.jpg',
+    'image/img4.jpg',
+    'image/img5.jpg',
+    'image/img6.jpg',
+    'image/img7.jpg',
+    'image/img8.jpg',
+    'image/img9.jpg',
+    'image/img10.jpg'
+  ];
+
+  var description = [
+    '1.There are different types of careers you can pursue in your life. Which one will it be?',
+    '2.There are different types of careers you can pursue in your life. Which one will it be?',
+    '3.There are different types of careers you can pursue in your life. Which one will it be?',
+    '4.There are different types of careers you can pursue in your life. Which one will it be?',
+    '5.There are different types of careers you can pursue in your life. Which one will it be?',
+    '6.There are different types of careers you can pursue in your life. Which one will it be?',
+    '7.There are different types of careers you can pursue in your life. Which one will it be?',
+    '8.There are different types of careers you can pursue in your life. Which one will it be?',
+    '9.There are different types of careers you can pursue in your life. Which one will it be?',
+    '10.There are different types of careers you can pursue in your life. Which one will it be?'
+  ];
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width*0.6;  // MediaQuery는 전체 길이를 구해줌, 아래에 description은 60%만 차지하게 함
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('ListView',style: TextStyle(color: Colors.grey),),
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
+      body: ListView.builder(     //ListView
+          itemCount: titleList.length,    // titleList의 크기만큼 보여라
+          itemBuilder: (context,index){   // 내용과 index가 들어가게 만듬??/
+            return Card(    // 모서리가 살짝 둥글고 패널모양을 가지게 만들어줌
+              child: Row(
+                children: [
+                  Container(
+                    width: 100,
+                    height: 100,
+                    child: Image.asset(imageList[index]),
+                  ),
+                  Padding(
+                      padding: EdgeInsets.all(10),   // 패딩 크기 10 줘라
+                      child: Column(
+                        children: [
+                        Text(
+                          titleList[index],
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey,
+                          ),
+                        ),
+                          SizedBox(    // 각 요소마다 거리를 둠, 크기만 조절할 수 있는 Container(꾸미기X), 메모리 절약 O
+                            height: 10,
+                          ),
+                          SizedBox(
+                            width: width,
+                            child: Text(
+                              description[index],
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.grey[500]
+                              ),
+                            ),
+                          )
+                    ],
+                  ))
+                ],
+              ),
+            );
+          }),
+    );
+  }
+}
+```
+
+#### 버튼 클릭 기능 넣기
+```python
+body: ListView.builder(     //ListView
+          itemCount: titleList.length,    // titleList의 크기만큼 보여라
+          itemBuilder: (context,index){   // 내용과 index가 들어가게 만듬??/
+            return GestureDetector(   // 클릭 기능 넣기 (여기서부터 아래 3줄)
+              onTap: (){
+                debugPrint(titleList[index]);
+                showPopup(context,titleList[index],imageList[index],description[index]); // 클릭시 showPopup 함수 실행
+              },
+              child: Card(    // 모서리가 살짝 둥글고 패널모양을 가지게 만들어줌
+                child: Row(
+                ~~~~~
+
+```
+
+#### 클릭시 popup창 뜨기
+
+![image](https://user-images.githubusercontent.com/63588046/183566839-1b11bde2-6d27-463f-8550-be709193a22b.png)
+
+```python
+void showPopup(context, title, image, description) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog(
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.7,
+            height: 380,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10), color: Colors.white),
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    image,
+                    width: 200,
+                    height: 200,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  title,
+                  style: const TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Text(
+                    description,
+                    maxLines: 3, // 최대 몇줄까지 보여줄 것인가
+                    style: TextStyle(fontSize: 15, color: Colors.grey[500]),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                ElevatedButton.icon(
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(Icons.close),
+                  label: const Text('close'),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+```
+
+
+
+
