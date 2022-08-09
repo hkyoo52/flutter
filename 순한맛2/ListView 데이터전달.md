@@ -38,3 +38,52 @@ class _MyPageState extends State<MyPage> {
 }
 ```
 
+![image](https://user-images.githubusercontent.com/63588046/183647356-ea77e62b-c2a6-4274-8568-12bc23a384e6.png)
+
+```python
+# animal_page.dart
+import 'package:flutter/material.dart';
+
+import 'model.dart';
+
+class AnimalPage extends StatelessWidget {
+  const AnimalPage({Key? key, required this.animal}) : super(key: key); // animal이라는 변수를 받아야함(그래서 아래에 final Animal animal 만듬) // 그리고 animal은 null값 못가지므로 꼭 required를 앞에 붙여야함!!
+
+  final Animal animal;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(animal.name),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            //Image.asset(animal.imgPath), // 너무 이미지가 크게 나옴 -> SizedBox 사용
+            SizedBox(
+              height: 200,
+              width: 200,
+              child: Image.asset(animal.imgPath),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              'It lives in ' + animal.location,
+              style: TextStyle(
+                fontSize: 18
+              ),
+            )
+
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+## 좋아요 버튼
+* ... 작동이 안됨...??ㅠㅠ
