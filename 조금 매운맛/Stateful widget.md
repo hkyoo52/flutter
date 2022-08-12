@@ -23,6 +23,16 @@
 #### Render tree
 * 앱 상으로 보여줌
 
+## 변수 넣고 사용하는법
+```dart
+class _MyAppState extends State<MyApp> {
+  int counter = 0;   // 사용할 변수는 여기에 정의하고
+  
+  ~~~
+  Text('$counter'),   // 보여줄 부분에 이렇게 
+  ~~~
+  
+```
 
 ## Stateful widget 사용법
 * Stateless widget을 만든다.
@@ -34,4 +44,75 @@ setState(() {
     counter++;
     print('$counter');
   });
+```
+
+
+## 예제
+
+![image](https://user-images.githubusercontent.com/63588046/184275413-9d464bec-6128-4e9c-afa7-9acacc77f112.png)
+
+
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int counter = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('You have pushed the button'),
+              SizedBox(height: 20,),
+              Text('$counter'),
+              SizedBox(height: 20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FloatingActionButton(
+                      onPressed: (){
+                        setState(() {
+                          counter++;
+                        });
+                  },
+                      child: Icon(Icons.add),
+                  ),
+                  SizedBox(width: 20,),
+                  FloatingActionButton(
+                    onPressed: (){
+                      setState(() {
+                        counter--;
+                      });
+                  },
+                      child: Icon(Icons.remove),
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 ```
