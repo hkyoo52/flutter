@@ -27,7 +27,7 @@
 ## Stateful widget 사용법
 * Stateless widget을 만든다.
 * Stateful로 바꾼다.
-* 변경되는 부분을 setState(() { 내용 } ); 로 감싼다.
+* 변수가 변경되게 하는 부분을 setState(() { 내용 } ); 로 감싼다.
 
 ```dart
 setState(() {
