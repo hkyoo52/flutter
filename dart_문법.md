@@ -113,6 +113,20 @@ void main(){
 
 ```
 
+## 생성자2
+```dart
+class MyButton extends StatelessWidget {
+
+  // required는 무조건 
+  MyButton({required this.image, required this.text, required this.color, required this.radius, required this.onPressed});
+
+  final Widget image;
+  final Widget text;
+  final Color color;
+  final double radius;
+  final VoidCallback onPressed;
+```
+
 
 ## Collection Generic
 * Collection : 데이터들을 모아서 가지고 있는 자료구조
