@@ -139,7 +139,9 @@ void main(){
 
 
 
-
+## const vs final
+* const : 컴파일 할때부터 상수 -> 변수 초기화할때부터 고정되어 있음
+* final : 런타임때 상수 -> 초기화할때는 고정 X 
 
 
 
