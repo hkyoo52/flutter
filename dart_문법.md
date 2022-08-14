@@ -158,4 +158,64 @@ void main(){
 * final : 런타임때 상수 -> 초기화할때는 고정 X 
 
 
+## null safety
+* 모든 변수는 null이 될 수 없다. non-nullable 변수에는 null 값을 할당할 수 없다.
+* non-nullable 변수를 위한 null check가 필요 없다. (num == null  이런거 X)
+* Class 내의 변수는 반드시 선언과 동시에 초기화를 시켜야 함 (int name; 은 안됨!!, int name = 5;)
+* 반드시 null이 안되는 경우 뒤에 ! 붙여!!  
 
+
+
+#### 에러
+```dart
+String? name; // null값이 올 수 있다.
+
+String nameChange(String name) {   -> 근데 여기서 String name에 name은 null 이면 안된다!! 그래서 에러
+  this.name = name;
+  return name.toUpperCase();
+}
+```
+
+#### 고치는점
+```dart
+String? name;
+
+String nameChange(String? name) {   
+  this.name = name;
+  if(name == null){
+    return 'need a name';
+  }
+  else{
+    return name.toUpperCase();
+  }
+}
+```
+
+#### late 사용하기
+```dart
+class Person {
+  late String name;
+  
+  String printname(String name){
+    this.name = name;
+    return name
+  }
+}
+
+void main() {
+  Person p = Person();
+  print(p.printname('hi'))
+}
+```
+
+#### null을 가지면 안되는 경우 required 추가
+```dart
+void main() {
+  print(add(a: 5, b:6));
+}
+
+int add({required int a, required int b}) {
+  int sum = a + b;
+  return sum;
+}
+```
