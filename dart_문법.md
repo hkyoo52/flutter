@@ -307,5 +307,96 @@ void fetchData(String account) {
 }
 ```
 
+## cascade notation
+* 아래 2개는 동일함
+```dart
+Person p1 = new Person();
+p1.age= 20;
+p1.name='James';
+p1.show();
+```
+```dart
+Person p1 = new Person();
+p1..name='Jamie'..setA(30)..show();   // 이 방식이 cascade notation
+```
 
+
+## generate
+```dart
+// 1부터 45까지 생성 ... [1,2,3,,,,,,45]
+var test = List<int>.generate(45, (i) => i+1);
+print(test);
+```
+## shuffle
+
+
+## 반복문
+```dart
+void main(){
+  
+  List<String> rainbow = ['빨','주','노','초','파','남','보'];
+  
+  for(int i = 0; i<rainbow.length; i++){
+    print(rainbow[i]);
+  }
+}
+```
+
+```dart
+void main(){
+  
+  List<String> rainbow = ['빨','주','노','초','파','남','보'];
+  
+  for(String x in rainbow){
+    print(x);
+  }
+}
+```
+
+#### 로또번호 예제
+```dart
+import 'dart:math';
+
+void main(){
+  List lotto =  Lottonum();
+  List my = Mynum();
+  int num=0;
+  for(int i in lotto){
+    for(int j in my){
+      if(i==j){
+        num++;
+        print('당첨번호 : $i');
+        break;
+      }
+    }
+  }
+  print('총 당첨 개수 : $num');
+}
+
+
+List Lottonum(){
+  var random = Random();
+  List<int> LottoList = [];
+  var num;
+  
+  for(int i=0; i<6; i++){
+    num = random.nextInt(45)+1;
+    LottoList.add(num);
+  }
+  return LottoList;
+}
+
+List Mynum(){
+  var random = Random();
+  List<int> MyList = [];
+  var num;
+  
+  for(int i=0; i<6; i++){
+    num = random.nextInt(45)+1;
+    MyList.add(num);
+  }
+  return MyList;
+}
+
+```
 
