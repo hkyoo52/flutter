@@ -306,7 +306,7 @@ void fetchData(String account) {
   print(info3);
 }
 ```
-
+메
 ## cascade notation
 * 아래 2개는 동일함
 ```dart
@@ -320,14 +320,23 @@ Person p1 = new Person();
 p1..name='Jamie'..setA(30)..show();   // 이 방식이 cascade notation
 ```
 
-
 ## generate
 ```dart
 // 1부터 45까지 생성 ... [1,2,3,,,,,,45]
 var test = List<int>.generate(45, (i) => i+1);
 print(test);
 ```
+
 ## shuffle
+* 리스트 내에 있는거 섞기
+```dart
+List<int>.generate(45, (i) => i+1)..shuffle()
+```
+
+## 리스트 index하기 -> sublist
+```dart
+List<int>.generate(45, (i) => i+1).sublist(0,6);
+```
 
 
 ## 반복문
@@ -399,4 +408,6 @@ List Mynum(){
 }
 
 ```
+
+
 
