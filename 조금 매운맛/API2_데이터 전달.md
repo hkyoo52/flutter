@@ -7,6 +7,7 @@
 ```dart
 const apiKey = 'b2a769dd9206a9a735f9ffd0d18e141a';
 
+// latitude, apiKey 등 변수 const!!!로 저장하고 사용
 Network network = Network('https://api.openweathermap.org/data/2.5/weather?lat=$latitude3&lon=$longitude3&appid=$apiKey');
 ```
 
